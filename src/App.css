@@ -1,0 +1,34 @@
+
+@layer {
+    .top-navbar{
+        @apply absolute top-0 left-0 w-full right-0 h-[68px] flex justify-between items-center;
+    }
+    .nav-scroll-down {
+        background-color: rgb(20,20,20);
+        top: 0;
+        position: relative;
+        transition: position .2s,  background-color .3s;
+    }
+    .nav-scroll-up {
+        background-image: linear-gradient(180deg,rgba(0,0,0,.7) 10%,transparent);
+        background-color: transparent;
+        position: absolute;
+        top: 0;
+        transition: position .2s,  background-color .3s;
+    }
+
+    .caret {
+        border-color: #fff transparent transparent;
+        border-style: solid;
+        border-width: 5px 5px 0;
+        height: 0;
+        margin-left: 10px;
+        transition: transform 367ms cubic-bezier(.21,0,.07,1);
+        width: 0;
+    }
+
+    svg{ 
+        height: 100%;
+    }
+}
+
