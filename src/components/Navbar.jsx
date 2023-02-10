@@ -33,7 +33,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="h-[70px] z-50">
+    <div className="h-[70px] z-50 fixed left-0 right-0 top-0 w-full">
       <div className={`${navbarBG} top-navbar px-[4%] py-0 z-[2] flex items-center`}>
         
         <div className="flex items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">

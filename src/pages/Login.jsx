@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { Link } from 'react-router-dom';
 import { images } from '../assets'
 
@@ -7,6 +8,10 @@ const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const responseFacebook = (response) => {
+    console.log(response)
+  }
   
 
   return (
@@ -20,7 +25,7 @@ const Login = () => {
           <div className="pt-[80px] min-h-screen flex justify-center items-center">
 
             {/* Form */}
-            <form action="" className="w-full sm:w-[430px] h-[660px] mb-[90px] 
+            <form action="" className="w-full sm:w-[430px] min-h-[660px] mb-[90px] 
               sm:bg-[rgba(0,0,0,.75)] bg-transparent rounded-md flex flex-col pt-[60px] px-[20px] sm:px-[40px] md:px-[60px] pb-[100px]">
                 
                 <div>
@@ -33,13 +38,27 @@ const Login = () => {
                     </div>
                   
                     <div className='relative w-full h-[50px] text-[#8c8c8c] ]'>
-                      <input placeholder='Password' type="password" name="email" id="email" className={`w-full outline-none bg-[#333] h-full rounded text-white pb-0 px-5 placeholder:text-gray-400 font-light placeholder:text-[15px]`} />
+                      <input placeholder='Password' type="password" name="password" id="password" className={`w-full outline-none bg-[#333] h-full rounded text-white pb-0 px-5 placeholder:text-gray-400 font-light placeholder:text-[15px]`} />
                     </div>
                     <div id="" className="validation text-[#e87c03] text-[13px] mb-1 py-[6px] px-[3px]">
                       Your password must contain between 4 and 60 characters.
                     </div>
 
+
                     <button className='mt-6 mb-3 mx-0 font-[500] rounded text-[16px] w-full p-3 sm:p-3 text-white bg-[#e50914]'>Sign In</button>
+                    
+                    {/* Facebook */}
+                    <FacebookLogin
+                      appId="931737201320768"
+                      autoLoad
+                      callback={responseFacebook}
+                      render={renderProps => (
+                        <button className='mt-1 mb-3 mx-0 font-[500] rounded text-[16px] w-full p-3 sm:p-3 text-white bg-blue-700'>Facebook</button>
+                      )}
+                    />
+
+                    {/* Google */}
+                    <button className='mt-1 mb-3 mx-0 font-[500] rounded text-[16px] w-full p-3 sm:p-3 text-green-700 bg-white'>Google</button>
                     
 
                 </div>
