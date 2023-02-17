@@ -3,6 +3,11 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { Link } from 'react-router-dom';
 import { images } from '../assets'
 
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+
+import { GoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+
 const Login = () => {
   const [focus, setFocus] = useState(false);
 
@@ -12,7 +17,31 @@ const Login = () => {
   const responseFacebook = (response) => {
     console.log(response)
   }
+
+  const getGoogleDetails = (credentialResponse) => {
+    console.log(credentialResponse)
+
+    // const instance = axios.create({
+    //   baseURL: 'http://127.0.0.1:8000/',
+    //   timeout: 1000,
+    //   headers: {'Content-Type': 'application/json'}
+    // })
+
+    // if (credentialResponse !== null){
+    //   instance.post('/')
+    // }
+
+  }
+
+  const login = async () => {
+    
+  }
   
+
+  // const login = useGoogleLogin({
+  //   onSuccess: (codeResponse) => console.log(codeResponse),
+  //   onError: (error) => console.log('Login Failed:', error)
+  // });
 
   return (
     <div className='relative w-full h-full'>
@@ -58,7 +87,20 @@ const Login = () => {
                     />
 
                     {/* Google */}
-                    <button className='mt-1 mb-3 mx-0 font-[500] rounded text-[16px] w-full p-3 sm:p-3 text-green-700 bg-white'>Google</button>
+                    <button 
+                      className='mt-1 mb-3 mx-0 font-[500] rounded text-[16px] w-full 
+                        p-3 sm:p-3 text-green-700 bg-white'
+                        onClick={() => login()}
+                    >Google</button>
+
+                    <GoogleLogin
+                      onSuccess={credentialResponse => {
+                        getGoogleDetails(credentialResponse)
+                      }}
+                      onError={() => {
+                        console.log('Login Failed');
+                      }}
+                    />
                     
 
                 </div>
