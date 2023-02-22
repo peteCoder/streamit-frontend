@@ -1,25 +1,28 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
+// import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+// import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+// import axios from 'axios';
 
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+import { Spinner } from "react-activity";
+import "react-activity/dist/library.css";
+
+import { useAuthContext } from '../context/useAuthContext';
 import { images } from '../assets'
 import { useForm } from "react-hook-form";
-
-import { googleLogout, useGoogleLogin } from '@react-oauth/google';
-
 import { GoogleLogin } from '@react-oauth/google';
-import axios from 'axios';
+
 
 const SignUp = () => {
-  const [focus, setFocus] = useState(false);
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const {signUp, loading, successMessage, error: signUpError} = useAuthContext();
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async data => {
-    alert(JSON.stringify(data));
+    
+    const { username, email, password } = data;
+    signUp(username, email, password);
   }
 
   const responseFacebook = (response) => {
@@ -49,6 +52,13 @@ const SignUp = () => {
                 
                 <div>
                     <h1 className='text-white mb-7 text-[25px] sm:text-[30px] md:text-[32px] font-[500]'>Sign Up</h1>
+                    {signUpError && (
+                      <div className="validation text-[#e87c03] text-[12px] mb-1 py-[6px] px-[3px]">{signUpError}</div>
+                    )}
+                    {successMessage && (
+                      <div className="validation text-[green] text-[12px] mb-1 py-[6px] px-[3px]">{successMessage}</div>
+                    )}
+                    
                     <div className='mt-3 relative w-full h-[50px] text-[#8c8c8c] ]'>
                       <input {...register("username", { required: true })} placeholder='Username' type="text" name="username" id="username" className={`w-full outline-none bg-[#333] h-full rounded text-white pb-0 px-5 placeholder:text-[gray] focus:bg-[#454545] font-light placeholder:text-[15px]`} />
                     </div>
@@ -78,7 +88,9 @@ const SignUp = () => {
                     )}
 
 
-                    <button className='mt-3 mb-3 mx-0 font-[500] rounded text-[16px] w-full p-3 sm:p-3 text-white bg-[#80D200]'>Sign up</button>
+                    <button className='mt-3 mb-3 mx-0 font-[500] rounded text-[16px] w-full p-3 sm:p-3 text-white bg-[#80D200] flex items-center justify-center'>
+                      {loading ? <Spinner /> : <span>Sign up</span>}
+                    </button>
                     {/* <FacebookLogin
                       appId="931737201320768"
                       autoLoad={true}

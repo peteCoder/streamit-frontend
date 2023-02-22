@@ -1,14 +1,17 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../context/useAuthContext';
-import { Dots, Spinner } from "react-activity";
+
+import { Spinner } from "react-activity";
+import "react-activity/dist/library.css";
+
 import { images } from '../assets'
 import { useForm } from "react-hook-form";
-import "react-activity/dist/library.css";
+
 // import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 // import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { GoogleLogin } from '@react-oauth/google';
-import axios from 'axios';
+
 
 const LogIn = () => {
 
@@ -126,7 +129,7 @@ const LogIn = () => {
 
                 <div className='text-white mt-[10px]'>
                   <div className="text-[#737373] text-[16px] font-[400] mt-4">
-                  New to Netflix? {" "} <Link to='/signup' className='text-white hover:underline'>Sign up</Link>
+                  New to TSLNigeria? {" "} <Link to='/signup' className='text-white hover:underline'>Sign up</Link>
                   </div>
                   <div className='text-[13px] my-[16px] mx-0'>
                     <span className='text-[#8c8c8c]'>This page is protected by Google reCAPTCHA to ensure you're not a bot. </span>

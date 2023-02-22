@@ -3,7 +3,7 @@ import {
     useEffect, 
     useContext, 
     createContext, 
-    useMemo 
+    useMemo
 } from "react";
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import { BACKEND_BASE_URL } from "../utils/requests";
@@ -12,7 +12,7 @@ import { set } from "react-hook-form";
 
 const UserAuthContext = createContext({
     logIn: async () => {},
-    signIn: async () => {},
+    signUp: async () => {},
     logOut: async () => {}
 });
 
@@ -20,14 +20,16 @@ export const UserAuthContextProvider = ({children}) => {
 
     const [userToken, setUserToken] = useState(null);
     const [error, setError] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
 
     useEffect(() => {
         if (userToken) {
             setLoading(true)
+            // Set userToken before navigation
+            localStorage.setItem("user", JSON.stringify(userToken));
             setTimeout(() => {
-                localStorage.setItem("user", JSON.stringify(userToken));
                 navigate("/browse")
                 setLoading(false)
             }, 2000)
@@ -35,24 +37,52 @@ export const UserAuthContextProvider = ({children}) => {
         }
     }, [userToken, loading])
 
-    // SignIn
-    const signIn = async (username, email, password) => {
+    // signUp
+    const signUp = async (username, email, password) => {
+
         const options = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({username, email, password, re_password: password})
+            body: JSON.stringify({username, email, password, password2: password})
         }
-        fetch(`${BACKEND_BASE_URL}users/`, options)
+        await fetch(`${BACKEND_BASE_URL}api/user/`, options)
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                
+                setLoading(true)
+                if (data.status_code === 201){
+                    setSuccessMessage(data.detail)
+                    setLoading(true)
+                    setError("")
+                    setTimeout(() => {
+                        setLoading(false)
+                        setSuccessMessage("")
+                        navigate('/login')
+                    }, 2000)
+                } else {
+                    setSuccessMessage("")
+                }
+
+                if (data.error) {
+                    setError(data.error.details.email[0])
+                    setLoading(false)
+                    setSuccessMessage("")
+                } else {
+                    setError("")
+                    setLoading(false)
+                }
+            })
             .catch(error => console.log(error))
-            .finally(() => console.log("Request ended"))
+            .finally(() => {
+                setLoading(false)
+                console.log("Request ended")
+            })
     }
 
     // Login
-    const logIn = async (email, password) => {
+    const logIn = (email, password) => {
         const options = {
             method: 'POST',
             headers: {
@@ -61,26 +91,25 @@ export const UserAuthContextProvider = ({children}) => {
             body: JSON.stringify({ email, password})
         }
 
-        fetch(`${BACKEND_BASE_URL}auth/jwt/create/`, options)
+        fetch(`${BACKEND_BASE_URL}auth/token/login/`, options)
             .then(response => response.json())
             .then(data => {
                 setLoading(true)
-                if (data.access && data.refresh) {
+                if (data.auth_token){
+                    alert(JSON.stringify(data.auth_token))
                     setLoading(false)
                     setError("")
                     setUserToken(data)
                 } else {
-                    const errorDetails = data.error.details.detail
-                    alert(JSON.stringify(errorDetails))
-                    if (errorDetails){
-                        setLoading(false)
-                        setError(data.error.details.detail)
+                    setLoading(false)
+                    if (data.error.details.non_field_errors[0]){
+                        setError("Wrong user name and password.")
                     }
+                    
                 }
             })
             .catch(error => console.log(error))
             .finally(() => {
-                console.log("Request ended");
                 setLoading(false)
             })
     }
@@ -94,7 +123,14 @@ export const UserAuthContextProvider = ({children}) => {
     }
 
     return (
-        <UserAuthContext.Provider value={{signIn, logIn, logOut, error, loading}}>
+        <UserAuthContext.Provider value={{
+            signUp, 
+            logIn, 
+            logOut, 
+            error, 
+            loading, 
+            successMessage
+        }}>
             {children}
         </UserAuthContext.Provider>
     )
