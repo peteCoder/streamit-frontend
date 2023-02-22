@@ -1,10 +1,13 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import { THUMBNAIL_IMAGE_URL } from '../utils/requests';
 
 
 
 const Thumbnail = ({movie}) => {
+
+  
+  // const [movie, setMovie] = useState({})
     
   return (
     <div className='relative h-28 min-w-[100px] cursor-pointer transition duration-200 ease-out md:h-36

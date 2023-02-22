@@ -5,6 +5,9 @@ export const MOVIE_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/original'
 
 export const THUMBNAIL_IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
 
+// export const BACKEND_BASE_URL = "https://web-production-de75.up.railway.app/"
+export const BACKEND_BASE_URL = "http://127.0.0.1:8000/"
+
 const requests = {
     fetchTrending: `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`,
     fetchNetflixOriginals: `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_networks=213`,

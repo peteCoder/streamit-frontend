@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navbar, Row } from '../components'
 import Banner from '../components/Banner';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import HeroBanner from '../components/HeroBanner'
 import useMovies from '../hooks/useMovies';
@@ -20,7 +21,7 @@ const ListPage = () => {
     }
   } = useMovies();
   return (
-    <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
+    <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
      
      <Header  />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
@@ -32,14 +33,22 @@ const ListPage = () => {
           <Row title="Action Thrillers" movies={actionMovies} />
           {/* My List */}
           {/* {list.length > 0 && <Row title="My List" movies={list} />} */}
-
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
           <Row title="Romance Movies" movies={romanceMovies} />
           <Row title="Documentaries" movies={documentaries} />
         </section>
         {/* Modal */}
+        
       </main>
+      {/* <div className='bg-black/40 fixed top-0 w-screen overflow-y-scroll h-screen z-[11000] left-0 right-0 flex items-center justify-center'>
+        <div className='w-2/4 bg-gray-900 h-screen'>
+          <div className="h-[10vh] w-full">
+            <img src="" alt="" />
+          </div>
+        </div>
+      </div> */}
+      <Footer />
     </div>
   )
 }

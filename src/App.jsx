@@ -3,7 +3,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { Login, Home, Welcome, SignUp } from './pages';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-
+import { ProtectedRoute } from './routes';
 export default function App() {
   
 
@@ -12,9 +12,25 @@ export default function App() {
     <GoogleOAuthProvider clientId="1039516402443-ogvmjrurbgea3nj2sdsrlv0n18vnbtie.apps.googleusercontent.com">
       <Routes>
         <Route element={<Welcome />} path='/' />
-        <Route element={<Login />} path="/login" />
-        <Route element={<SignUp />} path="/signup" />
-        <Route element={<Home />} path="/*" />
+        
+        <Route element={
+          <ProtectedRoute>
+            <Login />
+          </ProtectedRoute>
+        } path="/login" />
+
+        <Route element={
+          <ProtectedRoute>
+            <SignUp />
+          </ProtectedRoute>
+        } path="/signup" />
+
+        <Route element={
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        } path="/*" />
+
       </Routes>
     </GoogleOAuthProvider>
       
