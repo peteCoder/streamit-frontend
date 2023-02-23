@@ -2,10 +2,6 @@ import {useState, useEffect} from 'react';
 import requests from '../utils/requests';
 
 
-
-
-
-
 const initailState = {
     netflixOriginals: [],
     trendingNow: [],
