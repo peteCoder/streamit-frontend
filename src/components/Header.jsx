@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { images } from "../assets";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -24,10 +25,10 @@ const Header = () => {
     <header className={`${isScrolled && "bg-[#141414]"}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
-          src="https://rb.gy/ulxxee"
+          src={images.tslLogo}
           alt="netflix"
-          width={100}
-          height={100}
+          width={130}
+          height={130}
           className="cursor-pointer object-contain"
         />
 

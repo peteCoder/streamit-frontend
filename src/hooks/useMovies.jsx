@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import requests from '../utils/requests';
 
 
+
 const initailState = {
     netflixOriginals: [],
     trendingNow: [],
@@ -41,6 +42,7 @@ const useMovies = () => {
                 fetch(requests.fetchRomanceMovies).then((res) => res.json()),
                 fetch(requests.fetchDocumentaries).then((res) => res.json()),
             ])
+
 
             setMovies({
                 netflixOriginals: netflixOriginals.results,

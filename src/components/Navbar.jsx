@@ -37,7 +37,7 @@ const Navbar = () => {
       <div className={`${navbarBG} top-navbar px-[4%] py-0 z-[2] flex items-center`}>
         
         <div className="flex items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
-          <img className='h-[25px]' src={images.logo} alt="" />
+          <img className='h-[25px]' src={images.tslLogo} alt="" />
           <ul className='flex items-center gap-3'>
             <li className='md:hidden flex justify-center items-center'> <a className='text-[0.65rem] lg:text-[.9rem] text-center text-[#e5e5e5] h-full duration-200 transition-all cursor-pointer' href="#">Browse</a></li>
             <li className='hidden md:flex justify-center items-center'> <a className='text-[0.65rem] lg:text-[.9rem] text-center text-[#e5e5e5] h-full duration-200 transition-all cursor-pointer' href="#">Home</a></li>
