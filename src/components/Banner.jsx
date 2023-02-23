@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { MOVIE_IMAGE_BASE_URL } from "../utils/requests";
 import { FaPlay } from "react-icons/fa";
+import { useRecoilState } from "recoil";
+import { modalState, movieState } from "../atoms/ModalAtom";
 // import 
 
 
@@ -10,13 +12,16 @@ const Banner = ({ netflixOriginals }) => {
   const [movie, setMovie] = useState({});
 // const movie = netflixOriginals
 
+const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
+  const [showModal, setShowModal] = useRecoilState(modalState)
+
   useEffect(() => {
     setMovie(
       netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]
     );
   }, [netflixOriginals]);
 
-console.log(netflixOriginals)
+// console.log(netflixOriginals)
 
   return (
     
@@ -43,7 +48,12 @@ console.log(netflixOriginals)
         <button className="bannerButton bg-white text-black">
           <FaPlay className="h-4 w-4 text-black md:h-7 md:w-7" /> Play
         </button>
-        <button className="bannerButton bg-[gray]/70">
+        <button className="bannerButton bg-[gray]/70"
+          onClick={() => {
+            setCurrentMovie(movie)
+            setShowModal(true)
+          }}
+        >
           More Info
           <svg
             xmlns="http://www.w3.org/2000/svg"

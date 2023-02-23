@@ -77,7 +77,6 @@ export const UserAuthContextProvider = ({children}) => {
             .catch(error => console.log(error))
             .finally(() => {
                 setLoading(false)
-                console.log("Request ended")
             })
     }
 
@@ -96,7 +95,6 @@ export const UserAuthContextProvider = ({children}) => {
             .then(data => {
                 setLoading(true)
                 if (data.auth_token){
-                    alert(JSON.stringify(data.auth_token))
                     setLoading(false)
                     setError("")
                     setUserToken(data)
