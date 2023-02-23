@@ -8,8 +8,15 @@ import Header from '../components/Header';
 import HeroBanner from '../components/HeroBanner'
 import VidoeModal from '../components/Modal';
 import useMovies from '../hooks/useMovies';
+import { useShows } from '../hooks/useShows';
 
 const ListPage = () => {
+
+  const {shows} = useShows();
+
+  const categories = shows.showsByCategory
+  const videos = shows.showsByVideos
+  console.log(videos)
 
   const {
     movies: {
@@ -30,18 +37,22 @@ const ListPage = () => {
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
       <Header  />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
-      <Banner netflixOriginals={netflixOriginals} />
+      <Banner netflixOriginals={netflixOriginals} videos={videos} />
       {/* setion */}
       <section className="md:space-y-24"> 
-          <Row title="Trending Now" movies={trendingNow} />
+          {categories.map(category => (
+            <Row title={category.name} movies={category.videos} />
+          ))}
+          
+          {/* <Row title="Trending Now" movies={trendingNow} />
           <Row title="Top Rated" movies={topRated} />
-          <Row title="Action Thrillers" movies={actionMovies} />
+          <Row title="Action Thrillers" movies={actionMovies} /> */}
           {/* My List */}
           {/* {list.length > 0 && <Row title="My List" movies={list} />} */}
-          <Row title="Comedies" movies={comedyMovies} />
+          {/* <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
           <Row title="Romance Movies" movies={romanceMovies} />
-          <Row title="Documentaries" movies={documentaries} />
+          <Row title="Documentaries" movies={documentaries} /> */}
         </section>
         {/* Modal */}
         {showModal && <VidoeModal />}

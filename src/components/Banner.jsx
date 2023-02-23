@@ -7,7 +7,7 @@ import { modalState, movieState } from "../atoms/ModalAtom";
 
 
 
-const Banner = ({ netflixOriginals }) => {
+const Banner = ({ netflixOriginals, videos }) => {
 
   const [movie, setMovie] = useState({});
 // const movie = netflixOriginals
@@ -15,33 +15,36 @@ const Banner = ({ netflixOriginals }) => {
 const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
   const [showModal, setShowModal] = useRecoilState(modalState)
 
+  // useEffect(() => {
+  //   setMovie(
+  //     netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]
+  //   );
+  // }, [netflixOriginals]);
+
   useEffect(() => {
     setMovie(
-      netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]
+      videos[Math.floor(Math.random() * videos?.length)]
     );
-  }, [netflixOriginals]);
+  }, [videos]);
 
 // console.log(netflixOriginals)
 
   return (
     
     <div className="flex flex-col space-y-2 md:space-y-4 py-16 lg:h-[65vh] lg:justify-end lg:pb-12">
-      <div className="absolute top-0 -z-10 left-0 h-[95vh] w-screen">
+      <div className="absolute top-0 -z-10 left-0 h-[95vh] w-screen overflow-hidden">
         <img
           alt=""
-          src={`${MOVIE_IMAGE_BASE_URL}${
-            movie?.backdrop_path || movie?.poster_path
-          }`}
-          className="top-0 left-0 w-full object-cover"
-        //   layout="fill"
-        //   objectFit="cover"
+          src={`${movie?.desktop_banner}`}
+          className="top-0 left-0 w-full object-contain"
         />
       </div>
       <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold">
-        {movie?.title || movie?.name || movie?.original_name}
+        {/* {movie?.title || movie?.name || movie?.original_name} */}
+        {movie?.title}
       </h1>
       <p className="max-w-xs text-xs md:max-w-lg md:text-lg lg:max-w-2xl lg:text-xl text-shadow-md">
-        {movie?.overview}
+        {movie?.description}
       </p>
 
       <div className="flex space-x-3">

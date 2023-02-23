@@ -22,6 +22,7 @@ const useMovies = () => {
 
     useEffect(() => {
         const fetchMovies = async () => {
+
             const [
             netflixOriginals,
             trendingNow,

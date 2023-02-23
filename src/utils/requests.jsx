@@ -1,3 +1,6 @@
+import { useAuthContext } from "../context/useAuthContext"
+
+
 export const API_KEY = 'aabc3819d83a10eaef1f257417370ab0'
 const BASE_URL = 'https://api.themoviedb.org/3'
 
@@ -17,6 +20,24 @@ const requests = {
     fetchHorrorMovies: `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=27`,
     fetchRomanceMovies: `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=10749`,
     fetchDocumentaries: `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=99`,
+}
+
+const authToken = JSON.parse(localStorage.getItem('user')) !== undefined ? JSON.parse(localStorage.getItem('user'))?.auth_token : localStorage.clear()
+
+export const fetchOptions = {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${authToken}`
+    }
+}
+
+console.log(authToken)
+
+export const MyShowsRequest = {
+    showsByCategory: `${BACKEND_BASE_URL}api/categories/`,
+    showsByPlayList: `${BACKEND_BASE_URL}api/playlists/`,
+    showsByVideos: `${BACKEND_BASE_URL}api/videos`,
 }
 
 export default requests;

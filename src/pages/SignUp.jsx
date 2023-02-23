@@ -37,8 +37,7 @@ const SignUp = () => {
 
   return (
     <div className='w-full bg-center bg-cover relative'>
-      <img src={images.banner} className='hidden sm:block object-cover absolute top-0 bottom-0 right-0 left-0 -z-[1] min-h-[100vh] sm:min-h-[100vh] md:min-h-[100vh]' />
-      <div className="overlay absolute top-0 right-0 left-0 bottom-0 bg-[rgba(0,0,0,.75)] min-h-screen w-screen"></div>
+      <img src={images.TSLBG} className='hidden sm:block object-cover absolute top-0 bottom-0 right-0 left-0 -z-[1] min-h-[100vh] sm:min-h-[100vh] md:min-h-[100vh]' />
       <div className='w-full h-screen absolute top-0 left-0 bottom-0 right-0 sm:min-h-[100vh]'>
         <div className='relative w-screen h-screen'>
           <div className='absolute top-0 left-0 w-screen z-20 min-h-[90px] flex'>

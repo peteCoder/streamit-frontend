@@ -23,12 +23,14 @@ export const UserAuthContextProvider = ({children}) => {
     const [successMessage, setSuccessMessage] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
+    const [token, setToken] = useState(null)
 
     useEffect(() => {
         if (userToken) {
             setLoading(true)
             // Set userToken before navigation
             localStorage.setItem("user", JSON.stringify(userToken));
+            setToken(JSON.parse(localStorage.getItem("user")))
             setTimeout(() => {
                 navigate("/browse")
                 setLoading(false)
@@ -127,7 +129,8 @@ export const UserAuthContextProvider = ({children}) => {
             logOut, 
             error, 
             loading, 
-            successMessage
+            successMessage,
+            token
         }}>
             {children}
         </UserAuthContext.Provider>

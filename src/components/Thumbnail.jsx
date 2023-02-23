@@ -19,8 +19,13 @@ const Thumbnail = ({movie}) => {
         setShowModal(true)
       }}
     >
-        <img 
+        {/* <img 
             src={`${THUMBNAIL_IMAGE_URL}${movie?.backdrop_path || movie?.poster_path}`}
+            alt=""
+            className='rounded-sm object-cover md:rounded absolute'  
+        /> */}
+        <img 
+            src={`${movie.mobile_banner}`}
             alt=""
             className='rounded-sm object-cover md:rounded absolute'  
         />

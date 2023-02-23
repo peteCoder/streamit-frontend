@@ -6,13 +6,12 @@ import { GrYoutube } from "react-icons/gr";
 
 // GrFacebookOption
 const Footer = () => {
-  
 
-  return (
+    return (
     <>
         <footer
-        id="footer"
-        className="text-[gray] mt-5 mx-auto max-w-[980px] px-[4%] py-0 mb-5"
+            id="footer"
+            className="text-[gray] mt-5 mx-auto max-w-[980px] px-[4%] py-0 mb-5"
         >
         <div className="icons flex mb-[2em]">
             <a href="">
@@ -104,7 +103,7 @@ const Footer = () => {
         </footer>
 
     </>
-  );
+    );
 };
 
 export default Footer;
