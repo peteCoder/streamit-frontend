@@ -3,6 +3,9 @@ import requests from '../utils/requests';
 
 
 
+
+
+
 const initailState = {
     netflixOriginals: [],
     trendingNow: [],
