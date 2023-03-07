@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
-// import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
-// import { googleLogout, useGoogleLogin } from '@react-oauth/google';
-// import axios from 'axios';
+
 
 import { Spinner } from "react-activity";
 import "react-activity/dist/library.css";

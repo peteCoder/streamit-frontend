@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { images } from "../assets";
+import { useAuthContext } from "../context/useAuthContext";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+
+  const {logOut} = useAuthContext()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,9 +59,9 @@ const Header = () => {
             />
           </svg>
 
-          <p className="hidden lg:inline">Kids</p>
+          
 
-          <svg
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
             viewBox="0 0 20 20"
@@ -66,15 +69,15 @@ const Header = () => {
             id="bell"
           >
             <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-          </svg>
+          </svg> */}
 
-          <Link to={`/account`}>
+          <span onClick={() => logOut()}>
             <img
               src="https://rb.gy/g1pwyx"
               alt=""
               className="cursor-pointer rounded"
             />
-          </Link>
+          </span>
 
         </div>
     </header>
