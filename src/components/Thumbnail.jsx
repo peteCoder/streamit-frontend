@@ -25,7 +25,7 @@ const Thumbnail = ({movie}) => {
             className='rounded-sm object-cover md:rounded absolute'  
         /> */}
         <img 
-            src={`${movie.mobile_banner}`}
+            src={`${movie.desktop_banner}`}
             alt=""
             className='rounded-sm object-cover md:rounded absolute'  
         />

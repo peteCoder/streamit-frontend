@@ -32,6 +32,7 @@ export const UserAuthContextProvider = ({children}) => {
             localStorage.setItem("user", JSON.stringify(userToken));
             setToken(JSON.parse(localStorage.getItem("user")))
             setTimeout(() => {
+                window.location.reload()
                 navigate("/browse")
                 setLoading(false)
             }, 2000)
