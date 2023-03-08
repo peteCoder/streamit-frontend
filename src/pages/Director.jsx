@@ -75,7 +75,7 @@ const Director = () => {
                     setCurrentMovie(video)
                     setShowModal(true)
                   }}
-                  className="w-[257px] h-[167px] bg-[#D9D9D9] rounded-md scale-100 hover:scale-[1.05] cursor-pointer overflow-hidden transition-all duration-150 relative">
+                  className="w-[257px] h-[167px] bg-[#76777A] rounded-md scale-100 hover:scale-[1.05] cursor-pointer overflow-hidden transition-all duration-150 relative">
                     <img src={video.desktop_banner} className="w-full h-full object-cover" alt={video.title} />
                   </div>
                 ))}

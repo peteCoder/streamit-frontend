@@ -5,6 +5,7 @@ import { useFetchActor } from "../hooks/useFetchActor";
 import { useRecoilState } from "recoil";
 import { modalState, movieState } from "../atoms/ModalAtom";
 import VidoeModal from "../components/Modal";
+import { ActorThumbnail } from "../components";
 
 const Actor = () => {
   const { id } = useParams();
@@ -57,22 +58,7 @@ const Actor = () => {
             <div className="mt-10 flex flex-col gap-7 justify-center items-center md:items-start md:justify-start">
               <div className="text-2xl">Featured Shows</div>
               <div className="flex flex-wrap gap-5 justify-center items-center md:items-start md:justify-start">
-                {actor._videos.map((video) => (
-                  <div 
-                    onClick={() => {
-                      setCurrentMovie(video)
-                      setShowModal(true)
-                    }}
-
-                    key={video.id}
-                  className="w-[257px] h-[167px] bg-[#D9D9D9] rounded-md scale-100 hover:scale-[1.05] cursor-pointer overflow-hidden transition-all duration-150 relative">
-                    <img
-                      src={video.desktop_banner}
-                      className="w-full h-full object-cover"
-                      alt={video.title}
-                    />
-                  </div>
-                ))}
+                {actor._videos.map((video) => (<ActorThumbnail video={video} />))}
               </div>
             </div>
           )}
@@ -84,5 +70,6 @@ const Actor = () => {
     </div>
   );
 };
+
 
 export default Actor;
