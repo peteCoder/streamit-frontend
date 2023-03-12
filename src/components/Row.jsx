@@ -48,6 +48,7 @@ const Row = ({ title, movies }) => {
 
         <div ref={rowRef} className="flex items-center space-x-5 overflow-y-hidden overflow-x-scroll scrollbar-hide md:space-x-2 md:p-2">
           {/* Thumbnail */}
+          {/* {movies.map(movie => <Thumbnail key={movie.id} movie={movie}  />)} */}
           {movies.map(movie => <Thumbnail key={movie.id} movie={movie}  />)}
           
         </div>

@@ -2,30 +2,30 @@ import React, { useEffect, useState } from 'react'
 import { BACKEND_BASE_URL, fetchOptions } from '../utils/requests'
 
 
-export const useFetchDirector = (id) => {
+export const useFetchSingleShow = (id) => {
 
-    const [director, setDirector] = useState({})
+    const [movie, setMovie] = useState({})
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        const getDirector = async () => {
+        const getShow = async () => {
             try {
                 setIsLoading(true)
-                const fetchedDirector = await fetch(`${BACKEND_BASE_URL}api/directors/${id}/`, fetchOptions)
-                const finalResults = await (await fetchedDirector.json())
-                setDirector(finalResults)
+                const fetchedMovie = await fetch(`${BACKEND_BASE_URL}api/videos/${id}/`, fetchOptions)
+                const finalResults = await (await fetchedMovie.json())
+                setMovie(finalResults)
                 setIsLoading(false)
             } catch (error){
                 console.log(error)
             }
         }
 
-        getDirector()
+        getShow()
         
     }, [id])
 
     return {
-        director,
+        movie,
         isLoading
     }
 }

@@ -1,7 +1,8 @@
 import { data } from 'autoprefixer'
 import React from 'react'
 import { FaPlay } from "react-icons/fa";
-import { BsFillPlayFill } from "react-icons/bs";
+import { BsChevronDown, BsFillPlayFill, BsHandThumbsUp, BsHandThumbsUpFill } from "react-icons/bs";
+import { AiOutlineCheck, AiOutlinePlus } from "react-icons/ai";
 import { useRecoilState } from 'recoil';
 import { modalState, movieState } from '../atoms/ModalAtom';
 
@@ -33,16 +34,37 @@ const ShowCard = ({data}) => {
                 <div className='z-10 bg-zinc-900 p-2 lg:p-6 absolute w-full transition shadow-md rounded-b-md cursor-pointer'>
                     <div className='flex flex-row items-center gap-3'>
                         <div 
-                            onClick={() => {}}
-                            className='cursor-pointer w-6 h-6 lg:h-10 lg:w-10 rounded-full flex justify-center items-center transition bg-white hover:bg-neutral-300'>
+                            onClick={() => {
+                                window.location.href = `/browse/show/${data.id}`
+                            }}
+                            className='cursor-pointer w-6 h-6 lg:h-10 lg:w-10 rounded-full flex justify-center items-center transition bg-white hover:bg-neutral-300'
+                            >
                                 <BsFillPlayFill
-                                    
                                     className='text-black' 
                                     size={30} 
                                 />
-
-
                         </div>
+
+                        <div className='cursor-pointer w-6 h-6 lg:h-10 lg:w-10 rounded-full flex justify-center items-center transition bg-transparent border'
+                            onClick={() => {
+                                setCurrentMovie(data);
+                                setShowModal(true);
+                            }}
+                        >
+                            <BsChevronDown />
+                        </div>
+                        {/* <div className='cursor-pointer w-6 h-6 lg:h-10 lg:w-10 rounded-full flex justify-center items-center transition bg-transparent border'>
+                            <BsHandThumbsUpFill />
+                        </div>
+                        <div className='cursor-pointer w-6 h-6 lg:h-10 lg:w-10 rounded-full flex justify-center items-center transition bg-transparent border'>
+                            <BsHandThumbsUp />
+                        </div>
+                        <div className='cursor-pointer w-6 h-6 lg:h-10 lg:w-10 rounded-full flex justify-center items-center transition bg-transparent border'>
+                            <AiOutlinePlus />
+                        </div>
+                        <div className='cursor-pointer w-6 h-6 lg:h-10 lg:w-10 rounded-full flex justify-center items-center transition bg-transparent border'>
+                            <AiOutlineCheck />
+                        </div> */}
                     </div>
 
                     <p className="text-green-400 font-semibold mt-4">New <span className='text-white'>2023</span></p>
