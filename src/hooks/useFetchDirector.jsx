@@ -5,13 +5,16 @@ import { BACKEND_BASE_URL } from '../utils/requests'
 export const useFetchDirector = (id) => {
 
     const [director, setDirector] = useState({})
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         const getDirector = async () => {
             try {
+                setIsLoading(true)
                 const fetchedDirector = await fetch(`${BACKEND_BASE_URL}api/directors/${id}/`)
                 const finalResults = await (await fetchedDirector.json())
                 setDirector(finalResults)
+                setIsLoading(false)
             } catch (error){
                 console.log(error)
             }
@@ -22,7 +25,8 @@ export const useFetchDirector = (id) => {
     }, [id])
 
     return {
-        director
+        director,
+        isLoading
     }
 }
 

@@ -7,12 +7,19 @@ import { modalState, movieState } from "../atoms/ModalAtom";
 import VidoeModal from "../components/Modal";
 import { ActorThumbnail } from "../components";
 
+
 const Actor = () => {
   const { id } = useParams();
 
-  const { actor } = useFetchActor(id);
-  const [showModal, setShowModal] = useRecoilState(modalState)
-  const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
+  const { actor, isLoading } = useFetchActor(id);
+  const [showModal, _] = useRecoilState(modalState)
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+
+
   return (
     <div>
       <Header />
@@ -58,7 +65,13 @@ const Actor = () => {
             <div className="mt-10 flex flex-col gap-7 justify-center items-center md:items-start md:justify-start">
               <div className="text-2xl">Featured Shows</div>
               <div className="flex flex-wrap gap-5 justify-center items-center md:items-start md:justify-start">
-                {actor._videos.map((video) => (<ActorThumbnail video={video} />))}
+                {actor._videos.map((video) => (
+                  <>
+                    <ActorThumbnail key={video.id} video={video} />
+                    <ActorThumbnail key={video.id} video={video} />
+                  </>
+                  
+                ))}
               </div>
             </div>
           )}

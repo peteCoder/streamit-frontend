@@ -5,11 +5,13 @@ import { useFetchDirector } from "../hooks/useFetchDirector";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import VidoeModal from '../components/Modal';
 import { modalState, movieState } from "../atoms/ModalAtom";
+import { ProfileLoader } from "../components";
+import ShowCard from "../components/ShowCard";
 
 const Director = () => {
   const { id } = useParams();
 
-  const { director } = useFetchDirector(id);
+  const { director, isLoading } = useFetchDirector(id);
 
   // const showModal = useRecoilValue(modalState)
   const [showModal, setShowModal] = useRecoilState(modalState)
@@ -17,11 +19,29 @@ const Director = () => {
 
   console.log(director);
 
+  if (isLoading) {
+    return (
+      <div className="w-full">
+        <Header />
+        <div className="mt-24 flex flex-wrap w-full">
+          <div className=""><ProfileLoader /></div>
+          <div className=""><ProfileLoader /></div>
+          <div className=""><ProfileLoader /></div>
+          <div className=""><ProfileLoader /></div>
+          <div className=""><ProfileLoader /></div>
+          <div className=""><ProfileLoader /></div>
+          
+          
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div>
       <Header />
 
-      <div className="bg-[url('/img/linear.png')] bg-cover md:bg-center min-h-screen w-full p-6 pt-24 md:p-20 md:pt-28">
+      <div className="bg-[url('/img/linear.png')] bg-cover md:bg-center min-h-[120vh] w-full p-6 pt-24 md:p-20 md:pt-28">
         <div className="flex flex-col md:flex-row gap-[33px]">
           <div className="flex items-center justify-center flex-shrink-0 max-w-[270.03px] flex-col">
             <img className="rounded-md" src={director.image} alt={director.name} />
@@ -65,19 +85,11 @@ const Director = () => {
           {director._videos && (
             <div className="mt-10 flex flex-col gap-7 justify-center items-center md:items-start md:justify-start">
               <div className="text-2xl">Featured Shows</div>
-              <div className="flex flex-wrap gap-5 justify-center items-center md:items-start md:justify-start"
+              <div className="flex flex-wrap gap-5 justify-center items-center md:items-start md:justify-start pb-20"
                 
               >
                 {director._videos.map(video => (
-                  <div 
-                  key={video.id}
-                  onClick={() => {
-                    setCurrentMovie(video)
-                    setShowModal(true)
-                  }}
-                  className="w-[257px] h-[167px] bg-[#76777A] rounded-md scale-100 hover:scale-[1.05] cursor-pointer overflow-hidden transition-all duration-150 relative">
-                    <img src={video.desktop_banner} className="w-full h-full object-cover" alt={video.title} />
-                  </div>
+                  <ShowCard key={video.id} data={video} />
                 ))}
               </div>
               

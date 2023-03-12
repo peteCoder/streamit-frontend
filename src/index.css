@@ -12,10 +12,31 @@
     user-select: none;
 } */
 
+
+@font-face {
+  font-family: Stem;
+  src: url('../public/Stem/stem.ttf');
+}
+
+.image-opacity:before {
+  background-image: linear-gradient(198deg,rgba(0,0,0,.9),hsla(0,0%,9%,.5) 20%,transparent 28%);
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+body {
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+  font-family: Stem, 'sans-serif';
+}
+
 @layer base {
-    body {
-      @apply bg-black text-white overflow-x-hidden;
-    }
+    
     header {
       @apply fixed top-0 z-50 w-full flex items-center justify-between px-4 py-4 transition-all lg:px-10 lg:py-6;
     }

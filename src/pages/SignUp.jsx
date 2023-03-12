@@ -85,7 +85,7 @@ const SignUp = () => {
                     )}
 
 
-                    <button className='mt-3 mb-3 mx-0 font-[500] rounded text-[16px] w-full p-3 sm:p-3 text-white bg-[#80D200] flex items-center justify-center'>
+                    <button className='mt-3 mb-3 mx-0 font-[500] rounded text-[16px] w-full p-3 sm:p-3 text-white bg-[#80D200] hover:bg-[#91dc19] transition-all duration-150 flex items-center justify-center'>
                       {loading ? <Spinner /> : <span>Sign up</span>}
                     </button>
                     {/* <FacebookLogin
@@ -149,7 +149,7 @@ const SignUp = () => {
 
           </div>
 
-          <div className='sm:bg-[rgba(0,0,0,.75)] bg-black py-8'>
+          {/* <div className='sm:bg-[rgba(0,0,0,.75)] bg-black py-8'>
             <div className='max-w-[1000px] w-[90%] mx-auto py-8'>
               <div className="text-[#737373] mb-8">
                 <a className='text-[1em]' href="">Questions? Contact us.</a>
@@ -176,7 +176,7 @@ const SignUp = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
 
         </div>
       </div>
