@@ -208,17 +208,19 @@ const VidoeModal = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-[2rem] md:gap-[5rem]">
             <div className="">
               <div className="flex items-center gap-2">
-                <span className="text-[#46d369] ">64% Match</span>
-                <span className="">2021</span>
+                {movie?.manual_views ? (
+                  <span className="text-[#46d369] ">{movie?.manual_views} Views</span>
+                ) : (
+                  <></>
+                )}
+                
+                <span className="">{(new Date(movie?.date_uploaded)).getFullYear()}</span>
                 <span className="border border-[hsla(0,0%,100%,.4)] text-ellipsis uppercase overflow-hidden px-[0.4rem] py-0">
                   {movie?.rating}
                 </span>
               </div>
               <div className="leading-[24px] text-[14px] mt-2 font-light">
                 {movie?.description}
-                While trying to free her sister from Fahai's clutches, Xiao Qing
-                winds up in a dystopian city and meets a mysterious man who
-                can't recall his past life.
               </div>
             </div>
 
@@ -274,31 +276,42 @@ const VidoeModal = () => {
               </div>
             </div>
           </div>
-
-          <div>
+          
+          {movie.more_like_this && (
+            <div>
             {/* More Like This */}
             <h3 className="mb-[20px] mt-[48px] text-[24px]">More Like This</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-3">
               {/* Delete one of these... */}
               {movie?.more_like_this?.map((video, index) => (
-                <div className="bg-[#2f2f2f] h-full min-h-[22em] m-[0.1em] cursor-pointer rounded-t-lg overflow-hidden">
-                  <div className="relative image-opacity h-[220px] md:h-[200px] ">
+                <div className="bg-[#2f2f2f] h-full min-h-[22em] m-[0.1em] rounded-t-lg rounded-b-lg overflow-hidden">
+                  <div className="relative image-opacity h-[220px] md:h-[200px] group cursor-pointer" onClick={() => {
+                    console.log("Hello")
+                  }}>
                     <img
                       className="w-full h-full object-cover"
                       src={video?.desktop_banner}
                       alt={video?.title}
                     />
+                    <div className="play-button md:invisible md:group-hover:visible cursor-pointer h-12 w-12 rounded-full border-[2px] flex justify-center items-center">
+                      <FaPlay className="h-4 w-4 md:h-5 md:w-5 text-white" /> 
+                    </div>
                   </div>
                   <div className="w-full">
                     <div className="p-[16px] flex items-center justify-between">
                       {/* First part */}
                       <div className="flex flex-col">
-                        <div className="text-[#46d369]">75% Match</div>
+
+                        {video?.manual_views ? (
+                          <span className="text-[#46d369] ">{video?.manual_views} Views</span>
+                        ) : (
+                          <></>
+                        )}
                         <div className="">
-                          <span className="border border-[hsla(0,0%,100%,.4)] text-white text-ellipsis uppercase overflow-hidden px-[0.4rem] py-0">
+                          <span className="border border-[hsla(0,0%,100%,.4)] text-white text-ellipsis uppercase overflow-hidden px-[0.4rem] pt-1">
                             <span>{movie?.rating}</span>
                           </span>
-                          <span className="ml-2">2023</span>
+                          <span className="ml-2">{(new Date(video?.date_uploaded)).getFullYear()}</span>
                         </div>
                       </div>
                       <div className="flex justify-center items-center border max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] rounded-full">
@@ -321,10 +334,7 @@ const VidoeModal = () => {
                     {/* Description */}
                     <div className="px-[16px]">
                       <p className="font-light pb-[20px]">
-                        {video?.description}. This is the woman kingWhile trying
-                        to free her sister from Fahai's clutches, Xiao Qing
-                        winds up in a dystopian city and meets a mysterious man
-                        who can't recall his past life.
+                        {video?.description}.
                       </p>
                     </div>
                   </div>
@@ -332,6 +342,10 @@ const VidoeModal = () => {
               ))}
             </div>
           </div>
+          )}
+          
+
+
 
           <h3 className="mb-[20px] mt-[48px] text-[30px]">
             <span className="font-light">About</span>{" "}

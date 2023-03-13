@@ -18,27 +18,22 @@ const ListPage = () => {
   const videos = shows.showsByVideos
   console.log(videos)
 
-  const {
-    movies: { netflixOriginals}
-  } = useMovies();
-
   const showModal = useRecoilValue(modalState)
 
   return (
-    <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
+    <div className="relative min-h-screen bg-gradient-to-b ">
       <Header  />
-      <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
-      <Banner netflixOriginals={netflixOriginals} videos={videos} />
+      <main className="relative pl-4 pb-40 lg:space-y-24 lg:pl-16">
+      <Banner videos={videos} />
       {/* setion */}
       <section className="md:space-y-24"> 
-        {categories.map(category => (
-          <Row title={category.name} movies={category.videos} />
-        ))}
+      
+        {categories.map(category => (<Row title={category.name} movies={category.videos} />))}
       </section>
         {/* Modal */}
         {showModal && <VidoeModal />}
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

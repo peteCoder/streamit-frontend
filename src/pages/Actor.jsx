@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil";
 import { modalState, movieState } from "../atoms/ModalAtom";
 import VidoeModal from "../components/Modal";
 import { ActorThumbnail } from "../components";
+import ShowCard from "../components/ShowCard";
 
 
 const Actor = () => {
@@ -15,16 +16,18 @@ const Actor = () => {
   const [showModal, _] = useRecoilState(modalState)
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return (
+      <div className="w-full h-screen min-h-screen flex items-center justify-center">
+        <img src={'/img/tsl-logo.gif'} alt="" />
+      </div>
+    )
   }
-
-
 
   return (
     <div>
       <Header />
 
-      <div className="bg-[url('/img/linear.png')] bg-cover md:bg-center min-h-screen w-full p-6 pt-24 md:p-20 md:pt-28">
+      <div className="bg-[url('/img/linear.png')] bg-cover md:bg-center min-h-[120vh] w-full p-6 pt-24 md:p-20 md:pt-28">
         <div className="flex flex-col md:flex-row gap-[33px]">
           <div className="flex items-center justify-center flex-shrink-0 max-w-[270.03px] flex-col">
             <img className="rounded-md" src={actor.image} alt={actor.name} />
@@ -65,13 +68,7 @@ const Actor = () => {
             <div className="mt-10 flex flex-col gap-7 justify-center items-center md:items-start md:justify-start">
               <div className="text-2xl">Featured Shows</div>
               <div className="flex flex-wrap gap-5 justify-center items-center md:items-start md:justify-start">
-                {actor._videos.map((video) => (
-                  <>
-                    <ActorThumbnail key={video.id} video={video} />
-                    <ActorThumbnail key={video.id} video={video} />
-                  </>
-                  
-                ))}
+                {actor._videos.map((video) => (<ShowCard key={video.id} data={video} />))}
               </div>
             </div>
           )}

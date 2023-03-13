@@ -1,4 +1,5 @@
 import React, {useRef, useState} from "react";
+import ShowCard from "./ShowCard";
 import Thumbnail from "./Thumbnail";
 
 
@@ -23,50 +24,42 @@ const Row = ({ title, movies }) => {
 
 
   return (
-    <div className="h-40 space-y-0.5 md:space-y-2">
-      <h2 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">{title}</h2>
 
-      <div className="group relative md:-ml-2">
-        {/* ChevronLeft */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${
-            !isMoved && 'hidden'
-          }`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-          onClick={() => handleClick('left')}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-
-        <div ref={rowRef} className="flex items-center space-x-5 overflow-y-hidden overflow-x-scroll scrollbar-hide md:space-x-2 md:p-2">
-          {/* Thumbnail */}
-          {/* {movies.map(movie => <Thumbnail key={movie.id} movie={movie}  />)} */}
-          {movies.map(movie => <Thumbnail key={movie.id} movie={movie}  />)}
-          
+    <div className="pr-1">
+      {movies && (
+        <div className="mt-10 flex flex-col gap-7 justify-center items-center md:items-start md:justify-start">
+          <div className="text-2xl">{title}</div>
+          <div className="flex flex-wrap gap-5 justify-start items-center md:items-start md:justify-start">
+            {movies.map((video) => (<ShowCard key={video.id} data={video} />))}
+          </div>
         </div>
-
-        {/* ChevronRight */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-          onClick={() => handleClick('right')}
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </div>
+      )}
     </div>
+    // <div className="">
+    //   <h2 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl mt-[14rem]">{title}</h2>
+
+    //   <div className="relative md:-ml-2">
+    //     {/* ChevronLeft */}
+        
+
+    //     <div  className="flex items-center md:p-2 flex-wrap mb-40 gap-5">
+    //       {/* Thumbnail */}
+    //       {/* {movies.map(movie => <Thumbnail key={movie.id} movie={movie}  />)} */}
+          
+    //       {movies.map(movie => (
+          
+    //           <ShowCard key={movie.id} data={movie}  />
+          
+              
+    //       ))}
+
+          
+    //     </div>
+
+    //     {/* ChevronRight */}
+        
+    //   </div>
+    // </div>
   );
 };
 

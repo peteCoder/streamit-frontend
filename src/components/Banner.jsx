@@ -7,19 +7,14 @@ import { modalState, movieState } from "../atoms/ModalAtom";
 
 
 
-const Banner = ({ netflixOriginals, videos }) => {
+const Banner = ({ videos }) => {
 
   const [movie, setMovie] = useState({});
-// const movie = netflixOriginals
 
-const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
+
+  const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
   const [showModal, setShowModal] = useRecoilState(modalState)
 
-  // useEffect(() => {
-  //   setMovie(
-  //     netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]
-  //   );
-  // }, [netflixOriginals]);
 
   useEffect(() => {
     setMovie(
@@ -27,7 +22,6 @@ const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
     );
   }, [videos]);
 
-// console.log(netflixOriginals)
 
   return (
     
@@ -39,19 +33,22 @@ const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
           className="top-0 left-0 w-full object-contain"
         />
       </div>
-      <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold">
-        {/* {movie?.title || movie?.name || movie?.original_name} */}
+      <h1 className="text-xl md:text-3xl lg:text-4xl font-bold">
         {movie?.title}
       </h1>
-      <p className="max-w-xs text-xs md:max-w-lg md:text-lg lg:max-w-2xl lg:text-xl text-shadow-md">
+      <p className="max-w-xs text-xs md:max-w-lg lg:max-w-2xl lg:text-lg text-shadow-md">
         {movie?.description}
       </p>
 
-      <div className="flex space-x-3">
-        <button className="bannerButton bg-white text-black">
-          <FaPlay className="h-4 w-4 text-black md:h-7 md:w-7" /> Play
+      <div className="flex space-x-3 ">
+        <button className="bannerButton bg-white text-black text-sm"
+        onClick={() => {
+            window.location.href = `/browse/show/${movie?.id}`
+        }}
+        >
+          <FaPlay className="h-2 w-2 text-black md:h-4 md:w-4" /> Play
         </button>
-        <button className="bannerButton bg-[gray]/70"
+        <button className="bannerButton bg-[gray]/70 text-sm"
           onClick={() => {
             setCurrentMovie(movie)
             setShowModal(true)
@@ -60,7 +57,7 @@ const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
           More Info
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 md:h-8 md:w-8"
+            className="h-3 w-3 md:h-5 md:w-5"
             viewBox="0 0 20 20"
             fill="currentColor"
           >

@@ -21,18 +21,8 @@ const Director = () => {
 
   if (isLoading) {
     return (
-      <div className="w-full">
-        <Header />
-        <div className="mt-24 flex flex-wrap w-full">
-          <div className=""><ProfileLoader /></div>
-          <div className=""><ProfileLoader /></div>
-          <div className=""><ProfileLoader /></div>
-          <div className=""><ProfileLoader /></div>
-          <div className=""><ProfileLoader /></div>
-          <div className=""><ProfileLoader /></div>
-          
-          
-        </div>
+      <div className="w-full h-screen min-h-screen flex items-center justify-center">
+        <img src={'/img/tsl-logo.gif'} alt="" />
       </div>
     )
   }
