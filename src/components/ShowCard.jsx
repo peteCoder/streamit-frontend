@@ -15,7 +15,7 @@ const ShowCard = ({data}) => {
                 setCurrentMovie(data);
                 setShowModal(true);
             }}
-            className='cursor-pointer object-cover transition duration-200 shadow-xl md:group-hover:opacity-0 delay-300 w-full h-[24vw] md:h-[12vw]'
+            className='cursor-pointer object-cover transition duration-200 shadow-xl md:group-hover:opacity-0 delay-300 w-full h-[20vw] md:h-[10vw]'
             src={data.desktop_banner} alt="thumbnail" />
 
         <div className='opacity-0 absolute top-0 transition duration-200 

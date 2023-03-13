@@ -5,14 +5,9 @@ import { MOVIE_IMAGE_BASE_URL, THUMBNAIL_IMAGE_URL } from '../utils/requests'
 const HeroBanner = () => {
   const {
     movies: {
-      netflixOriginals,
       trendingNow,
-      topRated,
-      actionMovies,
       comedyMovies,
-      horrorMovies,
-      romanceMovies,
-      documentaries 
+
     }
   } = useMovies();
 

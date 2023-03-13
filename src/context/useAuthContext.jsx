@@ -30,6 +30,7 @@ export const UserAuthContextProvider = ({children}) => {
             // Set userToken before navigation
             localStorage.setItem("user", JSON.stringify(userToken));
             setToken(JSON.parse(localStorage.getItem("user")))
+            console.log(userToken)
             setTimeout(() => {
                 window.location.reload()
                 navigate("/browse")

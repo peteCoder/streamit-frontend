@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { images } from "../assets";
 import { useAuthContext } from "../context/useAuthContext";
 
@@ -30,50 +29,22 @@ const Header = () => {
         <img
           src={images.tslLogo}
           alt="netflix"
-          width={130}
-          height={130}
-          className="cursor-pointer object-contain"
+          className="cursor-pointer object-contain w-14 sm:w-16 md:w-[120px]"
         />
 
         <ul className="hidden space-x-4 md:flex">
-          <a href="#" className="headerLink">Home</a>
-          <a href="#" className="headerLink">TV Shows</a>
-          <a href="#" className="headerLink">My List</a>
+          <a href="/" className="headerLink">Home</a>
+          <a href="/shows" className="headerLink">Shows</a>
+          <a href="/list/shows" className="headerLink">My List</a>
         </ul>
       </div>
 
         <div className="flex items-center space-x-4 text-sm font-light">
-          {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 hidden sm:inline"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            id="search"
-          >
-            <path
-              fillRule="evenodd"
-              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-              clipRule="evenodd"
-            />
-          </svg> */}
-
-          
-
-          {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            id="bell"
-          >
-            <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-          </svg> */}
-
           <span onClick={() => logOut()}>
             <img
-              src="https://rb.gy/g1pwyx"
+              src="/img/netPNG.png"
               alt=""
-              className="cursor-pointer rounded"
+              className="cursor-pointer rounded h-5 w-5 sm:h-8 sm:w-8 md:w-10 md:h-10"
             />
           </span>
 

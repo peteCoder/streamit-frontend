@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { Login, Home, Welcome, SignUp, Actor, Director, Details } from './pages';
+import { Login, Home, Welcome, SignUp, Actor, Director, Details, MyList, ShowsList } from './pages';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { ProtectedRoute } from './routes';
 export default function App() {
@@ -15,6 +15,8 @@ export default function App() {
         <Route element={<Actor />} path='/actor/:id' />
         <Route element={<Director />} path='/director/:id' />
         <Route element={<Details />} path='/browse/show/:id' />
+        <Route element={<MyList />} path='/list/shows' />
+        <Route element={<ShowsList />} path='/shows' />
         
         <Route element={
           <ProtectedRoute>

@@ -15,6 +15,7 @@ const Actor = () => {
   const { actor, isLoading } = useFetchActor(id);
   const [showModal, _] = useRecoilState(modalState)
 
+
   if (isLoading) {
     return (
       <div className="w-full h-screen min-h-screen flex items-center justify-center">

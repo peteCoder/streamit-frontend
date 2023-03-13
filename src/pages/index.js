@@ -6,4 +6,6 @@ export {default as NotFound} from './NotFound'
 export {default as Details} from './Details'
 export {default as Actor} from './Actor'
 export {default as Director} from './Director'
+export {default as MyList} from './MyList'
+export {default as ShowsList} from './ShowsList'
 
