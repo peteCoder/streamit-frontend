@@ -4,7 +4,7 @@ import './Welcome.css';
 
 const Welcome = () => {
   return (
-    <>
+    <div className="body">
     <div className="preloader">
       <img src="" alt="" />
     </div>
@@ -1418,7 +1418,7 @@ const Welcome = () => {
     {/* <!-- end expected premiere --> */}
   
     {/* <!-- footer --> */}
-    <footer classNameName="footer">
+    <footer classNameName="footer bg-black">
       <div className="container">
         <div className="row">
           {/* <!-- footer list --> */}
@@ -1496,7 +1496,7 @@ const Welcome = () => {
     <script src="js/photoswipe.min.js"></script>
     <script src="js/photoswipe-ui-default.min.js"></script>
     <script src="js/main.js"></script>
-    </>
+    </div>
   )
 }
 
