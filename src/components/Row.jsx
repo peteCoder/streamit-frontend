@@ -21,10 +21,7 @@ const Row = ({ title, movies }) => {
     }
   }
 
-
-
   return (
-
     <div className="pr-1">
       {movies && (
         <div className="mt-10 flex flex-col gap-7 justify-center items-center md:items-start md:justify-start">

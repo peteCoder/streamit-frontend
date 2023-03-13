@@ -26,6 +26,7 @@ export const useFetchShowsByCat = () => {
 
 
     return {
-        showsByCat
+        showsByCat,
+        isLoading
     }
 }

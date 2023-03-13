@@ -5,7 +5,6 @@ import Header from '../components/Header'
 import VidoeModal from '../components/Modal'
 import ShowCard from '../components/ShowCard'
 import { useFetchShowsByCat } from '../hooks/useFetchShowsByCat'
-import { useShows } from '../hooks/useShows'
 
 const ShowsList = () => {
 

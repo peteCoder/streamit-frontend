@@ -7,3 +7,6 @@ const MoreThumbnail = () => {
 }
 
 export default MoreThumbnail
+
+
+

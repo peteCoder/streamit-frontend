@@ -9,16 +9,27 @@ import HeroBanner from '../components/HeroBanner'
 import VidoeModal from '../components/Modal';
 import useMovies from '../hooks/useMovies';
 import { useShows } from '../hooks/useShows';
+import { useFetchShowsByCat } from '../hooks/useFetchShowsByCat';
 
 const ListPage = () => {
 
   const {shows} = useShows();
-
-  const categories = shows.showsByCategory
   const videos = shows.showsByVideos
-  console.log(videos)
+
+  const {showsByCat, isLoading} = useFetchShowsByCat()
+  const categories = showsByCat
+  
+
 
   const showModal = useRecoilValue(modalState)
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen min-h-screen flex items-center justify-center">
+        <img src={'/img/tsl-logo.gif'} alt="" />
+      </div>
+    )
+  }
 
   return (
     <div className="relative min-h-screen bg-gradient-to-b ">

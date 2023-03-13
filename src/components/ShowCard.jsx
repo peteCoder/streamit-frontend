@@ -65,10 +65,10 @@ const ShowCard = ({data}) => {
                         
                     </div>
 
-                    <p className="text-green-400 font-semibold mt-4"> <span className='text-white'>{(new Date(data?.date_uploaded)).getFullYear()}</span></p>
+                    <p className="text-green-400 mt-2"> <span className='text-white'>{(new Date(data?.date_uploaded)).getFullYear()}</span></p>
 
                     <div className="flex flex-row mt-4 gap-2 items-center">
-                        {/* <p className="text-white text-[10px] lg:text-sm">{"12hr 30mins"}</p> */}
+                        <p className="text-white text-[16px] lg:text-sm font-bold">{data?.title}</p>
                     </div>
                     <div className="flex flex-row mt-4 gap-2 items-center">
                         {data.genres.map((genre, index) => (
@@ -76,7 +76,6 @@ const ShowCard = ({data}) => {
                                 {genre}
                                 {data.genres?.length - 1 === index ? "" : " • "}
                             </p>
-                            
                         ))}
                     </div>
                 </div>

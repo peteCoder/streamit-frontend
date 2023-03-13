@@ -286,7 +286,7 @@ const VidoeModal = () => {
               {movie?.more_like_this?.map((video, index) => (
                 <div className="bg-[#2f2f2f] h-full min-h-[22em] m-[0.1em] rounded-t-lg rounded-b-lg overflow-hidden">
                   <div className="relative image-opacity h-[220px] md:h-[200px] group cursor-pointer" onClick={() => {
-                    console.log("Hello")
+                    window.location.href = `/browse/show/${video?.id}`
                   }}>
                     <img
                       className="w-full h-full object-cover"

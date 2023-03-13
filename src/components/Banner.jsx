@@ -3,8 +3,6 @@ import { MOVIE_IMAGE_BASE_URL } from "../utils/requests";
 import { FaPlay } from "react-icons/fa";
 import { useRecoilState } from "recoil";
 import { modalState, movieState } from "../atoms/ModalAtom";
-// import 
-
 
 
 const Banner = ({ videos }) => {
