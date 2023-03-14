@@ -12,6 +12,7 @@ const ProtectedRoute = ({children}) => {
             navigaite('/login')
         } else {
             navigaite('/browse')
+            // window.location.href = "/main.html";
         }
     }, [])
 
