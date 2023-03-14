@@ -5,14 +5,13 @@ const ProtectedRoute = ({children}) => {
 
     const [user, setUser] = useState(localStorage.getItem("user"))
 
-    const navigaite = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!user) {
-            navigaite('/login')
+            navigate('/login')
         } else {
-            navigaite('/browse')
-            // window.location.href = "/main.html";
+            navigate('/browse')
         }
     }, [])
 
