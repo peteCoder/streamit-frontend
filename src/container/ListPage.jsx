@@ -34,12 +34,12 @@ const ListPage = () => {
   return (
     <div className="relative min-h-screen bg-gradient-to-b ">
       <Header  />
-      <main className="relative pl-4 pb-40 lg:space-y-24 lg:pl-16">
+      <main className="relative pl-4 pb-40 lg:space-y-24 lg:pl-10">
       <Banner videos={videos} />
       {/* setion */}
       <section className="md:space-y-24"> 
       
-        {categories.map(category => (<Row title={category.name} movies={category.videos} />))}
+        {categories?.map(category => (<Row title={category?.name} movies={category?.videos} />))}
       </section>
         {/* Modal */}
         {showModal && <VidoeModal />}

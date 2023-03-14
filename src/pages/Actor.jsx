@@ -68,7 +68,7 @@ const Actor = () => {
           {actor._videos && (
             <div className="mt-10 flex flex-col gap-7 justify-center items-center md:items-start md:justify-start">
               <div className="text-2xl">Featured Shows</div>
-              <div className="flex flex-wrap gap-5 justify-center items-center md:items-start md:justify-start">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-3">
                 {actor._videos.map((video) => (<ShowCard key={video.id} data={video} />))}
               </div>
             </div>

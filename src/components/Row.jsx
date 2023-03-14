@@ -23,9 +23,9 @@ const Row = ({ title, movies }) => {
   return (
     <div className="pr-1">
       {movies && (
-        <div className="mt-10 flex flex-col gap-7 justify-center items-center md:items-start md:justify-start">
+        <div className="mt-10 flex flex-col gap-7 justify-center items-center xs:items-start md:justify-start">
           <div className="text-xl md:text-2xl">{title}</div>
-          <div className="flex flex-wrap gap-2 justify-start items-center md:items-start md:justify-start">
+          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-7 md:gap-3">
             {movies.map((video) => (<ShowCard key={video.id} data={video} />))}
           </div>
         </div>
