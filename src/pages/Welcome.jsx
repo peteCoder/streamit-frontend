@@ -9,7 +9,7 @@ const Welcome = () => {
       <img src="" alt="" />
     </div>
     
-    <header className="header">
+    <header className="header header__welcome">
       <div className="header__wrap">
         <div className="container">
           <div className="row">

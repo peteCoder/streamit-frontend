@@ -215,7 +215,7 @@ ul {
 /*==============================
 	Header
 ==============================*/
-header {
+.header__welcome {
   border-bottom: solid #ddd 1px;
 }
 .header {
