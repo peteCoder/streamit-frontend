@@ -1,6 +1,5 @@
 import React, {useRef, useState} from "react";
 import ShowCard from "./ShowCard";
-import Thumbnail from "./Thumbnail";
 
 
 
